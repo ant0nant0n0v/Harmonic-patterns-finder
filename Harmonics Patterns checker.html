@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Harmonics Checker</title>
+    <title>Harmonic Patterns Checker</title>
     <style>
-        /* Add some basic CSS for styling */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -18,22 +17,24 @@
             margin-top: 10px;
         }
         #results {
+			font-weight: bold;
             margin-top: 20px;
         }
     </style>
 </head>
-<body>
-    <h1>Harmonics Checker</h1>
+<body><center>
+    <h1> Harmonic Patterns Checker </h1>
+	<p  style="margin-top: -20px"><h6><small> created by RaZoR for the other Jedis at ScalpX academy </small></h6></p>
     <form id="harmonicsForm">
-        <label for="xb">Enter a value for 'xb': </label>
+        <label for="xb">Enter a value for XB: </label>
         <input type="text" id="xb" name="xb"><br><br>
-        <label for="ac">Enter a value for 'ac': </label>
+        <label for="ac">Enter a value for AC: </label>
         <input type="text" id="ac" name="ac"><br><br>
-        <label for="bd">Enter a value for 'bd': </label>
+        <label for="bd">Enter a value for BD: </label>
         <input type="text" id="bd" name="bd"><br><br>
-        <label for="xd">Enter a value for 'xd': </label>
+        <label for="xd">Enter a value for XD: </label>
         <input type="text" id="xd" name="xd"><br><br>
-        <button type="button" onclick="checkHarmonics()">Check</button>
+        <button type="button" onclick="checkHarmonics()">Check for a harmonic pattern</button>
     </form>
 
     <div id="results"></div>
@@ -50,76 +51,32 @@
             var user_bd = parseFloat(document.getElementById("bd").value);
             var user_xd = parseFloat(document.getElementById("xd").value);
 
-            // Define harmonics data (you can replace this with your actual data)
+            // Harmonics ratios
 			var harmonics = [
 			{
-				"name": "Bat              ",
-				"xb_min": 0.382,
-				"xb_max": 0.5,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 0.886,
-				"xd_max": 0.886
-			},
-			{
-				"name": "Max Bat          ",
+				"name": "Cypher",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
+				"ac_min": 1.414,
+				"ac_max": 2.14,
 				"bd_min": 1.272,
-				"bd_max": 2.618,
-				"xd_min": 0.886,
-				"xd_max": 0.886
-			},
-			{
-				"name": "Max Gartley      ",
-				"xb_min": 0.382,
-				"xb_max": 0.618,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.128,
-				"bd_max": 2.236,
-				"xd_min": 0.618,
+				"bd_max": 2.0,
+				"xd_min": 0.786,
 				"xd_max": 0.786
 			},
 			{
-				"name": "Alt Shark 2      ",
-				"xb_min": 0.446,
-				"xb_max": 0.618,
-				"ac_min": 0.618,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 0.886,
-				"xd_max": 0.886
-			},
-			{
-				"name": "Anti Nen star    ",
+				"name": "Anti Cypher",
 				"xb_min": 0.5,
 				"xb_max": 0.786,
 				"ac_min": 0.467,
 				"ac_max": 0.707,
 				"bd_min": 1.618,
 				"bd_max": 2.618,
-				"xd_min": 0.786,
-				"xd_max": 0.786
+				"xd_min": 1.272,
+				"xd_max": 1.272
 			},
 			{
-				"name": "Leonardo         ",
-				"xb_min": 0.5,
-				"xb_max": 0.5,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.128,
-				"bd_max": 2.618,
-				"xd_min": 0.786,
-				"xd_max": 0.786
-			},
-			{
-				"name": "Gartley          ",
+				"name": "Gartley",
 				"xb_min": 0.618,
 				"xb_max": 0.618,
 				"ac_min": 0.382,
@@ -130,7 +87,139 @@
 				"xd_max": 0.786
 			},
 			{
-				"name": "Crab             ",
+				"name": "Max Gartley",
+				"xb_min": 0.382,
+				"xb_max": 0.618,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.128,
+				"bd_max": 2.236,
+				"xd_min": 0.618,
+				"xd_max": 0.786
+			},
+			{
+				"name": "A Gartley",
+				"xb_min": 0.618,
+				"xb_max": 0.786,
+				"ac_min": 1.128,
+				"ac_max": 2.618,
+				"bd_min": 1.618,
+				"bd_max": 1.618,
+				"xd_min": 1.272,
+				"xd_max": 1.272
+			},
+			{
+				"name": "NN A Gartley",
+				"xb_min": 0.618,
+				"xb_max": 0.786,
+				"ac_min": 1.128,
+				"ac_max": 2.618,
+				"bd_min": 1.618,
+				"bd_max": 1.618,
+				"xd_min": 1.272,
+				"xd_max": 1.272
+			},
+			{
+				"name": "NN Gartley",
+				"xb_min": 0.618,
+				"xb_max": 0.618,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.128,
+				"bd_max": 1.618,
+				"xd_min": 0.786,
+				"xd_max": 0.786
+			},
+			{
+				"name": "Nen star",
+				"xb_min": 0.382,
+				"xb_max": 0.618,
+				"ac_min": 1.414,
+				"ac_max": 2.14,
+				"bd_min": 1.272,
+				"bd_max": 2.0,
+				"xd_min": 1.272,
+				"xd_max": 1.272
+			},
+			{
+				"name": "Anti Nen star",
+				"xb_min": 0.5,
+				"xb_max": 0.786,
+				"ac_min": 0.467,
+				"ac_max": 0.707,
+				"bd_min": 1.618,
+				"bd_max": 2.618,
+				"xd_min": 0.786,
+				"xd_max": 0.786
+			},
+						{
+				"name": "Butterfly",
+				"xb_min": 0.786,
+				"xb_max": 0.786,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.618,
+				"bd_max": 2.618,
+				"xd_min": 1.272,
+				"xd_max": 1.618
+			},
+			{
+				"name": "Max Butterfly",
+				"xb_min": 0.618,
+				"xb_max": 0.886,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.272,
+				"bd_max": 2.618,
+				"xd_min": 1.272,
+				"xd_max": 1.618
+			},
+			{
+				"name": "A Butterfly",
+				"xb_min": 0.382,
+				"xb_max": 0.618,
+				"ac_min": 1.128,
+				"ac_max": 2.618,
+				"bd_min": 1.272,
+				"bd_max": 1.272,
+				"xd_min": 0.618,
+				"xd_max": 0.786
+			},
+			{
+				"name": "Bat",
+				"xb_min": 0.382,
+				"xb_max": 0.5,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.618,
+				"bd_max": 2.618,
+				"xd_min": 0.886,
+				"xd_max": 0.886
+			},
+			{
+				"name": "A Bat",
+				"xb_min": 0.382,
+				"xb_max": 0.618,
+				"ac_min": 1.128,
+				"ac_max": 2.618,
+				"bd_min": 2.0,
+				"bd_max": 2.618,
+				"xd_min": 1.128,
+				"xd_max": 1.128
+			},
+			{
+				"name": "Max Bat",
+				"xb_min": 0.382,
+				"xb_max": 0.618,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.272,
+				"bd_max": 2.618,
+				"xd_min": 0.886,
+				"xd_max": 0.886
+			},
+			{
+				"name": "Crab",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
 				"ac_min": 0.382,
@@ -141,62 +230,7 @@
 				"xd_max": 1.618
 			},
 			{
-				"name": "Anti New Cypher  ",
-				"xb_min": 0.5,
-				"xb_max": 0.786,
-				"ac_min": 0.467,
-				"ac_max": 0.707,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 1.272,
-				"xd_max": 1.272
-			},
-			{
-				"name": "Butterfly        ",
-				"xb_min": 0.786,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 1.272,
-				"xd_max": 1.618
-			},
-			{
-				"name": "Max Butterfly    ",
-				"xb_min": 0.618,
-				"xb_max": 0.886,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.272,
-				"bd_max": 2.618,
-				"xd_min": 1.272,
-				"xd_max": 1.618
-			},
-			{
-				"name": "Butterfly 113    ",
-				"xb_min": 0.786,
-				"xb_max": 1.0,
-				"ac_min": 0.618,
-				"ac_max": 1.0,
-				"bd_min": 1.128,
-				"bd_max": 1.618,
-				"xd_min": 1.128,
-				"xd_max": 1.128
-			},
-			{
-				"name": "Alt Shark 1      ",
-				"xb_min": 0.446,
-				"xb_max": 0.618,
-				"ac_min": 0.618,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 1.128,
-				"xd_max": 1.128
-			},
-			{
-				"name": "Deep Crab        ",
+				"name": "Deep Crab",
 				"xb_min": 0.886,
 				"xb_max": 0.886,
 				"ac_min": 0.382,
@@ -207,7 +241,7 @@
 				"xd_max": 1.618
 			},
 			{
-				"name": "A Crab           ",
+				"name": "A Crab",
 				"xb_min": 0.276,
 				"xb_max": 0.446,
 				"ac_min": 1.128,
@@ -218,29 +252,7 @@
 				"xd_max": 0.618
 			},
 			{
-				"name": "New Cypher       ",
-				"xb_min": 0.382,
-				"xb_max": 0.618,
-				"ac_min": 1.414,
-				"ac_max": 2.14,
-				"bd_min": 1.272,
-				"bd_max": 2.0,
-				"xd_min": 0.786,
-				"xd_max": 0.786
-			},
-			{
-				"name": "A Butterfly      ",
-				"xb_min": 0.382,
-				"xb_max": 0.618,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.272,
-				"bd_max": 1.272,
-				"xd_min": 0.618,
-				"xd_max": 0.786
-			},
-			{
-				"name": "Shark 1          ",
+				"name": "Shark 1",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
 				"ac_min": 1.128,
@@ -251,18 +263,7 @@
 				"xd_max": 0.886
 			},
 			{
-				"name": "A Bat            ",
-				"xb_min": 0.382,
-				"xb_max": 0.618,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 2.0,
-				"bd_max": 2.618,
-				"xd_min": 1.128,
-				"xd_max": 1.128
-			},
-			{
-				"name": "Shark 2          ",
+				"name": "Shark 2",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
 				"ac_min": 1.128,
@@ -273,29 +274,29 @@
 				"xd_max": 1.128
 			},
 			{
-				"name": "Nen star         ",
-				"xb_min": 0.382,
+				"name": "Alt Shark 1",
+				"xb_min": 0.446,
 				"xb_max": 0.618,
-				"ac_min": 1.414,
-				"ac_max": 2.14,
-				"bd_min": 1.272,
-				"bd_max": 2.0,
-				"xd_min": 1.272,
-				"xd_max": 1.272
-			},
-			{
-				"name": "Alt Bat          ",
-				"xb_min": 0.382,
-				"xb_max": 0.382,
-				"ac_min": 0.382,
+				"ac_min": 0.618,
 				"ac_max": 0.886,
-				"bd_min": 2.0,
-				"bd_max": 3.618,
+				"bd_min": 1.618,
+				"bd_max": 2.618,
 				"xd_min": 1.128,
 				"xd_max": 1.128
 			},
 			{
-				"name": "Navarro 200      ",
+				"name": "Alt Shark 2",
+				"xb_min": 0.446,
+				"xb_max": 0.618,
+				"ac_min": 0.618,
+				"ac_max": 0.886,
+				"bd_min": 1.618,
+				"bd_max": 2.618,
+				"xd_min": 0.886,
+				"xd_max": 0.886
+			},
+			{
+				"name": "Navarro",
 				"xb_min": 0.382,
 				"xb_max": 0.786,
 				"ac_min": 0.886,
@@ -306,425 +307,7 @@
 				"xd_max": 1.128
 			},
 			{
-				"name": "A Gartley        ",
-				"xb_min": 0.618,
-				"xb_max": 0.786,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 1.272,
-				"xd_max": 1.272
-			},
-			{
-				"name": "121              ",
-				"xb_min": 0.5,
-				"xb_max": 0.786,
-				"ac_min": 1.128,
-				"ac_max": 3.618,
-				"bd_min": 0.382,
-				"bd_max": 0.786,
-				"xd_min": 0.382,
-				"xd_max": 0.786
-			},
-			{
-				"name": "White Swan       ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 2.0,
-				"ac_max": 4.237,
-				"bd_min": 0.5,
-				"bd_max": 0.886,
-				"xd_min": 0.238,
-				"xd_max": 0.886
-			},
-			{
-				"name": "A 3 Drives       ",
-				"xb_min": 0.618,
-				"xb_max": 0.786,
-				"ac_min": 1.272,
-				"ac_max": 1.618,
-				"bd_min": 0.618,
-				"bd_max": 0.786,
-				"xd_min": 0.13,
-				"xd_max": 0.886
-			},
-			{
-				"name": "Partizan 2       ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 1.128,
-				"ac_max": 1.618,
-				"bd_min": 1.618,
-				"bd_max": 2.236,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "A 121            ",
-				"xb_min": 1.272,
-				"xb_max": 2.0,
-				"ac_min": 0.5,
-				"ac_max": 0.786,
-				"bd_min": 1.272,
-				"bd_max": 2.0,
-				"xd_min": 1.272,
-				"xd_max": 2.618
-			},
-			{
-				"name": "3 Drives         ",
-				"xb_min": 1.272,
-				"xb_max": 1.618,
-				"ac_min": 0.618,
-				"ac_max": 0.786,
-				"bd_min": 1.272,
-				"bd_max": 1.618,
-				"xd_min": 1.618,
-				"xd_max": 2.618
-			},
-			{
-				"name": "Black swan       ",
-				"xb_min": 1.382,
-				"xb_max": 2.618,
-				"ac_min": 0.236,
-				"ac_max": 0.5,
-				"bd_min": 1.128,
-				"bd_max": 2.0,
-				"xd_min": 1.128,
-				"xd_max": 2.618
-			},
-			{
-				"name": "HENRY \u2013 David    ",
-				"xb_min": 0.128,
-				"xb_max": 2.0,
-				"ac_min": 0.44,
-				"ac_max": 0.618,
-				"bd_min": 0.618,
-				"bd_max": 0.886,
-				"xd_min": 0.618,
-				"xd_max": 1.618
-			},
-			{
-				"name": "STRONG HENRY \u2013 David ",
-				"xb_min": 0.128,
-				"xb_max": 261.8,
-				"ac_min": 0.44,
-				"ac_max": 0.618,
-				"bd_min": 0.618,
-				"bd_max": 0.886,
-				"xd_min": 0.618,
-				"xd_max": 1.618
-			},
-			{
-				"name": "May-00           ",
-				"xb_min": 1.128,
-				"xb_max": 1.618,
-				"ac_min": 1.618,
-				"ac_max": 2.236,
-				"bd_min": 0.5,
-				"bd_max": 0.618,
-				"xd_min": 0.5,
-				"xd_max": 0.618
-			},
-			{
-				"name": "DAVID VM 1       ",
-				"xb_min": 0.128,
-				"xb_max": 1.618,
-				"ac_min": 0.382,
-				"ac_max": 0.382,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "DAVID VM 2       ",
-				"xb_min": 1.618,
-				"xb_max": 3.618,
-				"ac_min": 0.382,
-				"ac_max": 0.382,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 0.618,
-				"xd_max": 7.618
-			},
-			{
-				"name": "SNORM            ",
-				"xb_min": 0.9,
-				"xb_max": 1.1,
-				"ac_min": 0.9,
-				"ac_max": 1.1,
-				"bd_min": 0.9,
-				"bd_max": 1.1,
-				"xd_min": 0.618,
-				"xd_max": 1.618
-			},
-			{
-				"name": "COL Poruchik     ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 0.382,
-				"ac_max": 2.618,
-				"bd_min": 1.0,
-				"bd_max": 1.0,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "Sea Pony         ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 0.382,
-				"ac_max": 0.5,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "Partizan         ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 0.382,
-				"ac_max": 0.382,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "TOTAL 1          ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.272,
-				"bd_max": 2.618,
-				"xd_min": 0.786,
-				"xd_max": 0.886
-			},
-			{
-				"name": "TOTAL 2          ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 3.618,
-				"xd_min": 1.128,
-				"xd_max": 1.618
-			},
-			{
-				"name": "TOTAL 3          ",
-				"xb_min": 0.276,
-				"xb_max": 0.618,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.272,
-				"bd_max": 2.618,
-				"xd_min": 0.618,
-				"xd_max": 0.886
-			},
-			{
-				"name": "TOTAL 4          ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 1.128,
-				"xd_max": 1.272
-			},
-			{
-				"name": "TOTAL            ",
-				"xb_min": 0.276,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 2.618,
-				"bd_min": 1.272,
-				"bd_max": 3.618,
-				"xd_min": 0.618,
-				"xd_max": 1.618
-			},
-			{
-				"name": "Partizan 2.1     ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 1.128,
-				"ac_max": 1.128,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "Partizan 2.2     ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 1.128,
-				"ac_max": 1.128,
-				"bd_min": 2.236,
-				"bd_max": 2.236,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "Partizan 2.3     ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 0.618,
-				"ac_max": 1.618,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "Partizan 2.4     ",
-				"xb_min": 0.128,
-				"xb_max": 3.618,
-				"ac_min": 1.618,
-				"ac_max": 1.618,
-				"bd_min": 2.236,
-				"bd_max": 2.236,
-				"xd_min": 0.618,
-				"xd_max": 3.618
-			},
-			{
-				"name": "BG1              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.618,
-				"ac_max": 0.618,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG2              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.707,
-				"ac_max": 0.707,
-				"bd_min": 1.414,
-				"bd_max": 1.414,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG3              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.786,
-				"ac_max": 0.786,
-				"bd_min": 1.272,
-				"bd_max": 1.272,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG4              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.886,
-				"ac_max": 0.886,
-				"bd_min": 1.128,
-				"bd_max": 1.128,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG5              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.5,
-				"ac_max": 0.5,
-				"bd_min": 2.0,
-				"bd_max": 2.0,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG6              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.382,
-				"ac_max": 0.382,
-				"bd_min": 2.618,
-				"bd_max": 2.618,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG7              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.854,
-				"ac_max": 0.854,
-				"bd_min": 1.171,
-				"bd_max": 1.171,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "BG8              ",
-				"xb_min": 0.128,
-				"xb_max": 0.886,
-				"ac_min": 0.886,
-				"ac_max": 0.886,
-				"bd_min": 1.128,
-				"bd_max": 1.128,
-				"xd_min": 1.0,
-				"xd_max": 1.0
-			},
-			{
-				"name": "121 BG           ",
-				"xb_min": 0.5,
-				"xb_max": 0.577,
-				"ac_min": 1.128,
-				"ac_max": 1.733,
-				"bd_min": 0.618,
-				"bd_max": 0.707,
-				"xd_min": 0.447,
-				"xd_max": 0.786
-			},
-			{
-				"name": "NN Gartley       ",
-				"xb_min": 0.618,
-				"xb_max": 0.618,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.128,
-				"bd_max": 1.618,
-				"xd_min": 0.786,
-				"xd_max": 0.786
-			},
-			{
-				"name": "NN Bat           ",
-				"xb_min": 0.382,
-				"xb_max": 0.5,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 0.886,
-				"xd_max": 0.886
-			},
-			{
-				"name": "NN Alt Bat       ",
-				"xb_min": 0.382,
-				"xb_max": 0.382,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 2.0,
-				"bd_max": 4.236,
-				"xd_min": 1.128,
-				"xd_max": 1.128
-			},
-			{
-				"name": "NN Crab          ",
+				"name": "NN Crab",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
 				"ac_min": 0.382,
@@ -735,7 +318,7 @@
 				"xd_max": 1.618
 			},
 			{
-				"name": "NN Deep Crab     ",
+				"name": "NN Deep Crab",
 				"xb_min": 0.886,
 				"xb_max": 0.886,
 				"ac_min": 0.382,
@@ -746,18 +329,40 @@
 				"xd_max": 1.618
 			},
 			{
-				"name": "NN A Gartley     ",
-				"xb_min": 0.618,
-				"xb_max": 0.786,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.618,
-				"bd_max": 1.618,
-				"xd_min": 1.272,
-				"xd_max": 1.272
+				"name": "Alt Bat",
+				"xb_min": 0.382,
+				"xb_max": 0.382,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 2.0,
+				"bd_max": 3.618,
+				"xd_min": 1.128,
+				"xd_max": 1.128
 			},
 			{
-				"name": "NN A Bat         ",
+				"name": "NN Bat",
+				"xb_min": 0.382,
+				"xb_max": 0.5,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 1.618,
+				"bd_max": 2.618,
+				"xd_min": 0.886,
+				"xd_max": 0.886
+			},
+			{
+				"name": "NN Alt Bat",
+				"xb_min": 0.382,
+				"xb_max": 0.382,
+				"ac_min": 0.382,
+				"ac_max": 0.886,
+				"bd_min": 2.0,
+				"bd_max": 4.236,
+				"xd_min": 1.128,
+				"xd_max": 1.128
+			},
+			{
+				"name": "NN A Bat",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
 				"ac_min": 1.128,
@@ -768,7 +373,7 @@
 				"xd_max": 1.128
 			},
 			{
-				"name": "NN A Alt Bat     ",
+				"name": "NN A Alt Bat",
 				"xb_min": 0.236,
 				"xb_max": 0.5,
 				"ac_min": 1.128,
@@ -779,7 +384,7 @@
 				"xd_max": 0.886
 			},
 			{
-				"name": "NN A Butterfly   ",
+				"name": "NN A Butterfly",
 				"xb_min": 0.382,
 				"xb_max": 0.618,
 				"ac_min": 1.128,
@@ -790,7 +395,7 @@
 				"xd_max": 0.786
 			},
 			{
-				"name": "NN A Crab        ",
+				"name": "NN A Crab",
 				"xb_min": 0.236,
 				"xb_max": 0.447,
 				"ac_min": 1.128,
@@ -801,7 +406,7 @@
 				"xd_max": 0.618
 			},
 			{
-				"name": "NN A Deep Crab   ",
+				"name": "NN A Deep Crab",
 				"xb_min": 0.236,
 				"xb_max": 0.382,
 				"ac_min": 1.128,
@@ -810,105 +415,6 @@
 				"bd_max": 1.128,
 				"xd_min": 0.618,
 				"xd_max": 0.618
-			},
-			{
-				"name": "NN Leo           ",
-				"xb_min": 0.5,
-				"xb_max": 0.5,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.128,
-				"bd_max": 2.618,
-				"xd_min": 0.786,
-				"xd_max": 0.786
-			},
-			{
-				"name": "NN A Leo         ",
-				"xb_min": 0.382,
-				"xb_max": 0.886,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 2.0,
-				"bd_max": 2.0,
-				"xd_min": 1.272,
-				"xd_max": 1.272
-			},
-			{
-				"name": "NN Total 1       ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.272,
-				"bd_max": 2.618,
-				"xd_min": 0.786,
-				"xd_max": 0.886
-			},
-			{
-				"name": "NN Total 2       ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 0.886,
-				"bd_min": 1.618,
-				"bd_max": 4.236,
-				"xd_min": 1.128,
-				"xd_max": 1.618
-			},
-			{
-				"name": "NN Total 3       ",
-				"xb_min": 0.236,
-				"xb_max": 0.618,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.272,
-				"bd_max": 2.618,
-				"xd_min": 0.618,
-				"xd_max": 0.886
-			},
-			{
-				"name": "NN Total 4       ",
-				"xb_min": 0.382,
-				"xb_max": 0.786,
-				"ac_min": 1.128,
-				"ac_max": 2.618,
-				"bd_min": 1.618,
-				"bd_max": 2.618,
-				"xd_min": 1.128,
-				"xd_max": 1.272
-			},
-			{
-				"name": "NN TOTAL ***     ",
-				"xb_min": 0.236,
-				"xb_max": 0.786,
-				"ac_min": 0.382,
-				"ac_max": 2.618,
-				"bd_min": 1.272,
-				"bd_max": 4.236,
-				"xd_min": 0.618,
-				"xd_max": 1.618
-			},
-			{
-				"name": "NN Bl Swan       ",
-				"xb_min": 1.382,
-				"xb_max": 2.618,
-				"ac_min": 0.236,
-				"ac_max": 0.5,
-				"bd_min": 1.128,
-				"bd_max": 2.0,
-				"xd_min": 1.128,
-				"xd_max": 2.618
-			},
-			{
-				"name": "NN Wh Swan       ",
-				"xb_min": 0.382,
-				"xb_max": 0.724,
-				"ac_min": 2.0,
-				"ac_max": 4.236,
-				"bd_min": 0.5,
-				"bd_max": 0.886,
-				"xd_min": 0.382,
-				"xd_max": 0.886
 			}
 		]
 
@@ -930,17 +436,18 @@
 
             // Display the results
             var resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML = ""; // Clear previous results
+            resultsDiv.innerHTML =""; // Clear previous results
 
             if (matchedHarmonics.length > 0) {
-                resultsDiv.innerHTML += "Matching Harmonics:<br>";
+                resultsDiv.innerHTML +="Found these matching harmonic patterns:<br><br>";
                 for (var j = 0; j < matchedHarmonics.length; j++) {
-                    resultsDiv.innerHTML += matchedHarmonics[j] + "<br>";
+                    resultsDiv.innerHTML += matchedHarmonics[j] +"<br>";
                 }
             } else {
-                resultsDiv.innerHTML += "No matches found.";
+                resultsDiv.innerHTML +="<b>Not a harmonic pattern.</b>";
             }
         }
     </script>
+	</center>
 </body>
 </html>
